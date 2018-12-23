@@ -32,13 +32,8 @@ volumes:
       device: ":/nfsexport/nginx-proxy-manager/mariadb/data"
 services:
   app:
-    image: jc21/nginx-proxy-manager-base:latest-armhf
-    ports:
-      - 8080:80
-      - 8081:81
-      - 8443:443
-    environment:
-      - NODE_ENV=development
+    image: jc21/nginx-proxy-manager-base:latest-armhf 
+    environment: 
       - FORCE_COLOR=1
     volumes:
       - letsencrypt:/etc/letsencrypt
@@ -49,7 +44,6 @@ services:
       - db
     links:
       - db
-    command: node --max_old_space_size=250 --abort_on_uncaught_exception node_modules/nodemon/bin/nodemon.js
   db:
     image: lsioarmhf/mariadb:14.09.17
     environment:
