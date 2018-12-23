@@ -22,13 +22,13 @@ volumes:
     driver: local
     driver_opts:
       type: nfs
-      o: addr=172.0.0.4,rw,nolock
+      o: addr=172.0.0.4,rw,nolock,gid=1001,uid=1001
       device: ":/nfsexport/nginx-proxy-manager/mariadb/config"
   mariadb-data:
     driver: local
     driver_opts:
       type: nfs
-      o: addr=172.0.0.4,rw,nolock
+      o: addr=172.0.0.4,rw,nolock,gid=1001,uid=1001
       device: ":/nfsexport/nginx-proxy-manager/mariadb/data"
 services:
   app:
@@ -45,12 +45,14 @@ services:
     links:
       - db
   db:
-    image: lsioarmhf/mariadb:14.09.17
+    image: lsioarmhf/mariadb:latest
     environment:
       MYSQL_ROOT_PASSWORD: "npm"
       MYSQL_DATABASE: "npm"
       MYSQL_USER: "npm"
       MYSQL_PASSWORD: "npm"
+      PUID: "1001"
+      PGID: "1001"      
     volumes:
       - mariadb-config:/etc/mysql/conf.d/
       - mariadb-data:/var/lib/mysql
