@@ -1,6 +1,6 @@
-#INSTALL
+# INSTALL
 
-## pin docker version for armv6 devices
+## pin docker version for armv6 devices (optional)
 edit apt-get preferences:
 ```sudo nano /etc/apt/preferences.d/docker-ce```
 add the following:
@@ -24,7 +24,7 @@ iface usb0:0 inet static
 restart networking
 ```sudo service networking restart```
 
-##install docker
+## install docker
 ```
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
