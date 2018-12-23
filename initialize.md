@@ -1,6 +1,6 @@
 # INSTALL
 
-## pin docker version for armv6 devices
+## pin docker version for armv6 devices (optional)
 edit apt-get preferences:
 ```sudo nano /etc/apt/preferences.d/docker-ce```
 add the following:
