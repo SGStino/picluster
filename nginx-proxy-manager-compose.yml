@@ -4,31 +4,31 @@ volumes:
     driver: local
     driver_opts:
       type: nfs
-      o: addr=172.0.0.4,rw,nolock
+      o: addr=172.0.0.4,rw,nolock,hard
       device: ":/nfsexport/nginx-proxy-manager/letsencrypt"
   app:
     driver: local
     driver_opts:
       type: nfs
-      o: addr=172.0.0.4,rw,nolock
+      o: addr=172.0.0.4,rw,nolock,hard
       device: ":/nfsexport/nginx-proxy-manager/app"
   nginx:
     driver: local
     driver_opts:
       type: nfs
-      o: addr=172.0.0.4,rw,nolock
+      o: addr=172.0.0.4,rw,nolock,hard
       device: ":/nfsexport/nginx-proxy-manager/nginx"
   mariadb-config:
     driver: local
     driver_opts:
       type: nfs
-      o: addr=172.0.0.4,rw,nolock,gid=1001,uid=1001
+      o: addr=172.0.0.4,rw,nolock,hard
       device: ":/nfsexport/nginx-proxy-manager/mariadb/config"
   mariadb-data:
     driver: local
     driver_opts:
       type: nfs
-      o: addr=172.0.0.4,rw,nolock,gid=1001,uid=1001
+      o: addr=172.0.0.4,rw,nolock,hard
       device: ":/nfsexport/nginx-proxy-manager/mariadb/data"
 services:
   app:
